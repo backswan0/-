@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>아, 저장안했다</title>
+
+    <link rel="stylesheet" href="asset/css/common.css">
+    <link rel="stylesheet" href="asset/css/main.css">
+    <!-- Pretendard font css -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+    <!-- script -->
+    <script src="asset/js/main.js" defer></script>
+
+    <!-- 나중에 서버 만들면 따로 폴더 만들어서 뺍시다.지금은 CORS규칙(보안 문제)때문에 main.js에서 firebase를 사용할 수가 없어요 -->
+    <script type="module">      
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+      import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+      import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+      import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+      // Firebase 설정
+      const firebaseConfig = {
+        apiKey: "AIzaSyC47FpbMPczwLBo8SpBbpl6uJvLquLPS58",
+        authDomain: "otl-backend.firebaseapp.com",
+        projectId: "otl-backend",
+        storageBucket: "otl-backend.firebasestorage.app",
+        messagingSenderId: "59988054052",
+        appId: "1:59988054052:web:f4f1243a97375f85e788b1",
+        measurementId: "G-9GBEFN9ZF4"
+      };
+
+      // Firebase 초기화
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      console.log('Firebase 초기화 완료');
+      
+      // id 값 동적 할당
+      $("[id^='commentWrite']").click(async function () {
+        let idValue = $(this).attr("id");
+        //앞 12글자 삭제 후 뒤의 두 숫자만 가져옴
+        let idNum = idValue.slice(12);
+        let nickname = $(`#nickname${idNum}`).val();
+        let comment = $(`#comment${idNum}`).val();
+
+        let doc = {
+          'id': idNum,
+          'nickname': nickname,
+          'comment': comment
+        };
+
+        await addDoc(collection(db, "comments"), doc);
+        console.log(idNum, nickname, comment);
+      })
+    </script>
+
+    <!-- jquery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="main_title">
+                <ul>
+                    <li><img src="asset/img/key-ctrl.webp" alt="키보드 Ctrl 키 이미지"></li>
+                    <li>+</li>
+                    <li><img src="asset/img/key-s.webp" alt="키보드 S키 이미지"></li>
+                </ul>
+                <h1>아, 저장안했다</h1>
+                <p><span class="light_blue">저장</span>을 <span class="light_blue">사랑</span>하는 사람들의 <span class="light_blue">모임</span></p>
+            </div>
+        </header>
+
+        <section class="mb_team_wr">
+            <h3 class="hidden">팀원 소개 목록</h3>
+            <article class="mb_team wrap">
+                <ul>
+                    <!-- jihyeon -->
+                    <li>
+                        <div class="layer_bg"></div>
+                        <!-- profile top -->
+                        <ul class="profile_top">
+                            <li>
+                                <div class="circle"></div>
+                                <img src="asset/img/jihyeon.webp" alt="내 이름은 현트님의 이모티콘">
+                            </li>
+                            <li>
+                                <div class="mb_des">칸트 사촌이자 마감 지킴이죠.<br>어떻게든 해낼 것입니다.</div>
+                                <h2 class="mb_nick">내 이름은 현트, 신지현</h2>
+                                <div class="mb_mbti">INFJ</div>
+                            </li>
+                        </ul>
+
+                        <!-- cooperation -->
+                        <div class="mb_style">
+                            <h3>협업 스타일</h3>
+                            <ul>
+                                <li>다른 사람의 의견을 듣고 조율하는 데에 앞장섭니다. 특히 프로젝트라 함은 ‘일정’과 ‘마감’ 또한 매우 중요하다고 생각하기 때문에, 아이디어나 방향을 결정해야 할 때 적극적으로 의견을 냅니다.</li>
+                                <li>일정이나 지켜야 할 사항들을 팀원들과 공유하기를 정말 좋아합니다. 비록 이러한 태도를 ‘오지랖’이라고 표현하지만, 오지랖 부리기를 좋아합니다. 적어도 제가 속한 팀 구성원들은 중요한 걸 놓치는 일이 없길 바라는 마음에서 ‘출석 버튼 눌러주세요’라든지 ‘중간 인증 눌러주세요.’라든지 자주 공지합니다.</li>
+                            </ul>
+                        </div>
+
+                        <!-- accomplishment -->
+                        <div class="mb_point">
+                            <h3>성취 포인트</h3>
+                            <p>매일매일 해야 하는 일을 늦지 않게, 즉 제한 시간 안에 해냈을 때 성취감을 느낍니다. 자격증 취득 및 시험 합격 등 정 해진 기준을 제 노력으로 뛰어넘었을 때 보람을 느낍니다. 목표를 세우고, 그 목표를 달성했을 때 가장 큰 성취감을 느낍니다.</p>
+                        </div>
+
+                        <!-- advantage -->
+                        <div class="mb_pros">
+                            <h3>장점</h3>
+                            <ul>
+                                <li>성실함의 끝판왕</li>
+                                <li>오탈자 귀신</li>
+                                <li>기록광</li>
+                            </ul>
+                        </div>
+
+                        <!-- sns -->
+                        <div class="mb_sns">
+                            <a href="https://github.com/backswan0"><img src="asset/img/github-icon.svg" alt="깃허브 아이콘 이미지"></a>
+                            <a href="https://writingforever162.tistory.com/"><img src="asset/img/tistory-icon.svg" alt="티스토리 아이콘 이미지"></a>
+                        </div>
+
+                        <a href="javascript:" class="btn_layer comment_btn" layer="1"><span class="mb_nick_bold">내 이름은 현트</span>님과 친해지러가기</a>
+                        <!-- layer popup -->
+                        <div class="layer_wrap" layer="1">
+                            <div class="layer_content">
+                                <h3>To. 내 이름은 현트</h3>
+
+                                <ul class="comment_wr">
+                                    <!-- comment -->
+                                    <li>
+                                        <ul>
+                                            <li><img src="asset/img/anonymous.webp" alt="익명 프로필 이미지"></li>
+                                            <li>
+                                                <div class="nick_name">뜨거운 감자박스</div>
+                                                <div class="comment_des">
+                                                    안녕하세요. 제 이름은 핫감자입니다. 감자라서 그런지 꽤나 퍽퍽하지만서도 따끈따끈한 마음을 가지고 있어요.
+                                                    당신과 친해지기 위해서라면 이 한 몸을 불사질러 찜통에도 들어가보려고 합니다. 헛소리 같다고요?
+                                                    (퐁당)
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <ul>
+                                            <li><img src="asset/img/anonymous.webp" alt="익명 프로필 이미지"></li>
+                                            <li>
+                                                <div class="nick_name">뜨거운 감자박스</div>
+                                                <div class="comment_des">
+                                                    안녕하세요. 제 이름은 핫감자입니다. 감자라서 그런지 꽤나 퍽퍽하지만서도 따끈따끈한 마음을 가지고 있어요.
+                                                    당신과 친해지기 위해서라면 이 한 몸을 불사질러 찜통에도 들어가보려고 합니다. 헛소리 같다고요?
+                                                    (퐁당)
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <ul>
+                                            <li><img src="asset/img/anonymous.webp" alt="익명 프로필 이미지"></li>
+                                            <li>
+                                                <div class="nick_name">뜨거운 감자박스</div>
+                                                <div class="comment_des">
+                                                    안녕하세요. 제 이름은 핫감자입니다. 감자라서 그런지 꽤나 퍽퍽하지만서도 따끈따끈한 마음을 가지고 있어요.
+                                                    당신과 친해지기 위해서라면 이 한 몸을 불사질러 찜통에도 들어가보려고 합니다. 헛소리 같다고요?
+                                                    (퐁당)
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                <ul class="write_comment">
+                                    <li>
+                                        <label for="nickname01">닉네임</label>
+                                        <input type="text" id="nickname01" class="input_nick" placeholder="닉네임을 입력하세요">
+                                    </li>
+                                    <li>
+                                        <label for="comment01">댓글</label>
+                                        <textarea type="text" id="comment01" placeholder="하고 싶은 말을 남겨주세요"></textarea>
+                                    </li>
+                                </ul>
+
+                                <ul class="btn_wr">
+                                    <li><a href="javascript:" class="close_btn">닫기</a></li>
+                                    <li><a href="" class="upload_btn" id = "commentWrite01">댓글등록</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- chaeyoung -->
+                    <li>
+                        <div class="layer_bg"></div>
+                        <!-- profile top -->
+                        <ul class="profile_top">
+                            <li>
+                                <div class="circle"></div>
+                                <img src="asset/img/chaeyoung.webp" alt="개발자가 되고싶은 님의 이모티콘">
+                            </li>
+                            <li>
+                                <div class="mb_des">내 이름은 고난, 알고리즘이죠.<br>너무 재밌어! 근데 어려워!</div>
+                                <h2 class="mb_nick">개발자가 되고싶은 이채영</h2>
+                                <div class="mb_mbti">INTP</div>
+                            </li>
+                        </ul>
+
+                        <!-- cooperation -->
+                        <div class="mb_style">
+                            <h3>협업 스타일</h3>
+                            <ul>
+                                <li>다른 사람의 의견을 유연하게 수용합니다.</li>
+                                <li>장점에도 언급했듯이, 아이디어를 내야 하는 상황에서 새로운 아이디어 제시하기를 좋아합니다.
+                                    특히 무작정 아이디어를 제시하기보다는, 상황에 맞는 포인트를 고려하여 아이디어를 제시합니다. 일례로, 이번에 참여한 11조의 팀 이름을 정할 때, ‘이름에 너무 심오한 의미가 있지 않고 한눈에 들어오는, 시선을 끄는 팀 이름이면 좋겠다는 의견’이 나왔고, 제가 제안한 이름이 그대로 수용되었습니다.</li>
+                            </ul>
+                        </div>
+
+                        <!-- accomplishment -->
+                        <div class="mb_point">
+                            <h3>성취 포인트</h3>
+                            <p>하루를 끝마치고 자기 전 누워서 오늘 무엇을 했는지 정리할 때 보람을 느낍니다. 하나를 시작하면 끝까지 해야 직성이 풀리기 때문에 무언가를 완벽히 끝마쳤을 때 큰 성취감을 얻습니다.</p>
+                        </div>
+
+                        <!-- advantage -->
+                        <div class="mb_pros">
+                            <h3>장점</h3>
+                            <ul>
+                                <li>무한한 아이디어</li>
+                                <li>냉철한 시선</li>
+                                <li>즐길줄 아는 사람</li>
+                            </ul>
+                        </div>
+
+                        <!-- sns -->
+                        <div class="mb_sns">
+                            <a href="https://github.com/roqkfchqh" target="_blank"><img src="asset/img/github-icon.svg" alt="깃허브 아이콘 이미지"></a>
+                            <a href="https://roqkfchqh.tistory.com/" target="_blank"><img src="asset/img/tistory-icon.svg" alt="티스토리 아이콘 이미지"></a>
+                        </div>
+
+                        <a href="javascript:" class="btn_layer comment_btn" layer="2"><span class="mb_nick_bold">개발자가 되고싶은</span>님과 친해지러가기</a>
+                        <!-- layer popup -->
+                        <div class="layer_wrap" layer="2">
+                            <div class="layer_content">
+                                <h3>To. 개발자가 되고싶은</h3>
+
+                                <ul class="comment_wr">
+                                    <!-- comment -->
+                                    <li>
+                                        <ul>
+                                            <li><img src="asset/img/anonymous.webp" alt="익명 프로필 이미지"></li>
+                                            <li>
+                                                <div class="nick_name">다른 감자박스</div>
+                                                <div class="comment_des">
+                                                    안녕하세요. 제 이름은 핫감자입니다. 감자라서 그런지 꽤나 퍽퍽하지만서도 따끈따끈한 마음을 가지고 있어요.
+                                                    당신과 친해지기 위해서라면 이 한 몸을 불사질러 찜통에도 들어가보려고 합니다. 헛소리 같다고요?
+                                                    (퐁당)
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <ul>
+                                            <li><img src="asset/img/anonymous.webp" alt="익명 프로필 이미지"></li>
+                                            <li>
+                                                <div class="nick_name">착한 감자박스</div>
+                                                <div class="comment_des">
+                                                    안녕하세요. 제 이름은 핫감자입니다. 감자라서 그런지 꽤나 퍽퍽하지만서도 따끈따끈한 마음을 가지고 있어요.
+                                                    당신과 친해지기 위해서라면 이 한 몸을 불사질러 찜통에도 들어가보려고 합니다. 헛소리 같다고요?
+                                                    (퐁당)
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <ul>
+                                            <li><img src="asset/img/anonymous.webp" alt="익명 프로필 이미지"></li>
+                                            <li>
+                                                <div class="nick_name">뜨거운 감자박스</div>
+                                                <div class="comment_des">
+                                                    안녕하세요. 제 이름은 핫감자입니다. 감자라서 그런지 꽤나 퍽퍽하지만서도 따끈따끈한 마음을 가지고 있어요.
+                                                    당신과 친해지기 위해서라면 이 한 몸을 불사질러 찜통에도 들어가보려고 합니다. 헛소리 같다고요?
+                                                    (퐁당)
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                <ul class="write_comment">
+                                    <li>
+                                        <label for="nickname02">닉네임</label>
+                                        <input type="text" id="nickname02" class="input_nick" placeholder="닉네임을 입력하세요">
+                                    </li>
+                                    <li>
+                                        <label for="comment02">댓글</label>
+                                        <textarea type="text" id="comment02" placeholder="하고 싶은 말을 남겨주세요"></textarea>
+                                    </li>
+                                </ul>
+
+                                <ul class="btn_wr">
+                                    <li><a href="javascript:" class="close_btn">닫기</a></li>
+                                    <li><a href="" class="upload_btn" id = "commentWrite02">댓글등록</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- yujin -->
+                    <li>
+                        <div class="layer_bg"></div>
+                        <!-- profile top -->
+                        <ul class="profile_top">
+                            <li>
+                                <div class="circle"></div>
+                                <img src="asset/img/yujin.webp" alt="새싹개발자님의 이모티콘">
+                            </li>
+                            <li>
+                                <div class="mb_des">잭과 콩나무의 콩나무처럼<br>개발 꿈나무로 자라고 싶어요.</div>
+                                <h2 class="mb_nick">새싹 개발자 강유진</h2>
+                                <div class="mb_mbti">ENFP</div>
+                            </li>
+                        </ul>
+
+                        <!-- cooperation -->
+                        <div class="mb_style">
+                            <h3>협업 스타일</h3>
+                            <ul>
+                                <li>다른 사람의 생각에 잘 공감하고 긍정적입니다.</li>
+                                <li>코딩 관련 지식이 부족한 만큼, 캠프 기간에 최대한 집중력을 발휘하여 지식 습득 후 팀 구성원으로서 역할을 다하고자 합니다. 특히 전공과 관련된 대외 활동에서는 리더 역할도 해 본 만큼, 지식을 빠르게 습득하여 개발 분야에서도 리더 역할을 해보면 좋겠습니다. </li>
+                            </ul>
+                        </div>
+
+                        <!-- accomplishment -->
+                        <div class="mb_point">
+                            <h3>성취 포인트</h3>
+                            <p>어려운 문제를 풀었을 때입니다. 기존의 한계를 뛰어넘고 다시 발전하는 과정에서 보람과 성취감을 많이 느꼈습니다.</p>
+                        </div>
+
+                        <!-- advantage -->
+                        <div class="mb_pros">
+                            <h3>장점</h3>
+                            <ul>
+                                <li>성실함의 끝판왕</li>
+                                <li>긍정의 눈</li>
+                                <li>노력파</li>
+                            </ul>
+                        </div>
+
+                        <!-- sns -->
+                        <div class="mb_sns">
+                            <a href="https://github.com/Kang148" target="_blank"><img src="asset/img/github-icon.svg" alt="깃허브 아이콘 이미지"></a>
+                            <a href="https://velog.io/@yjkang/posts" target="_blank"><img src="asset/img/velog-icon.svg" alt="벨로그 아이콘 이미지"></a>
+                        </div>
+
+                        <a href="javascript:" class="btn_layer comment_btn" layer="3"><span class="mb_nick_bold">새싹 개발자</span>님과 친해지러가기</a>
+                        <!-- layer popup -->
+                        <div class="layer_wrap" layer="3">
+                            <div class="layer_content">
+                                <h3>To. 새싹 개발자</h3>
+
+                                <ul class="comment_wr">
+                                    <!-- comment -->
+                                    <li>
+                                        <ul>
+                                            <li><img src="asset/img/anonymous.webp" alt="익명 프로필 이미지"></li>
+                                            <li>
+                                                <div class="nick_name">플라워 감자박스</div>
+                                                <div class="comment_des">
+                                                    안녕하세요. 제 이름은 핫감자입니다. 감자라서 그런지 꽤나 퍽퍽하지만서도 따끈따끈한 마음을 가지고 있어요.
+                                                    당신과 친해지기 위해서라면 이 한 몸을 불사질러 찜통에도 들어가보려고 합니다. 헛소리 같다고요?
+                                                    (퐁당)
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <ul>
+                                            <li><img src="asset/img/anonymous.webp" alt="익명 프로필 이미지"></li>
+                                            <li>
+                                                <div class="nick_name">고구마 감자박스</div>
+                                                <div class="comment_des">
+                                                    안녕하세요. 제 이름은 핫감자입니다. 감자라서 그런지 꽤나 퍽퍽하지만서도 따끈따끈한 마음을 가지고 있어요.
+                                                    당신과 친해지기 위해서라면 이 한 몸을 불사질러 찜통에도 들어가보려고 합니다. 헛소리 같다고요?
+                                                    (퐁당)
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <ul>
+                                            <li><img src="asset/img/anonymous.webp" alt="익명 프로필 이미지"></li>
+                                            <li>
+                                                <div class="nick_name">뜨거운 감자박스</div>
+                                                <div class="comment_des">
+                                                    안녕하세요. 제 이름은 핫감자입니다. 감자라서 그런지 꽤나 퍽퍽하지만서도 따끈따끈한 마음을 가지고 있어요.
+                                                    당신과 친해지기 위해서라면 이 한 몸을 불사질러 찜통에도 들어가보려고 합니다. 헛소리 같다고요?
+                                                    (퐁당)
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                <ul class="write_comment">
+                                    <li>
+                                        <label for="nickname03">닉네임</label>
+                                        <input type="text" id="nickname03" class="input_nick" placeholder="닉네임을 입력하세요">
+                                    </li>
+                                    <li>
+                                        <label for="comment03">댓글</label>
+                                        <textarea type="text" id="comment03" placeholder="하고 싶은 말을 남겨주세요"></textarea>
+                                    </li>
+                                </ul>
+
+                                <ul class="btn_wr">
+                                    <li><a href="javascript:" class="close_btn">닫기</a></li>
+                                    <li><a href="" class="upload_btn" id = "commentWrite03">댓글등록</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- jian -->
+                    <li>
+                        <div class="layer_bg"></div>
+                        <!-- profile top -->
+                        <ul class="profile_top">
+                            <li>
+                                <div class="circle"></div>
+                                <img src="asset/img/jian.webp" alt="내 이름은 현트님의 이모티콘">
+                            </li>
+                            <li>
+                                <div class="mb_des">동그랗고 강한 별의 커비,<br>사람이 되어 스프링을 도전하다!</div>
+                                <h2 class="mb_nick">지식도 먹는 커비 박지안</h2>
+                                <div class="mb_mbti">ISTJ</div>
+                            </li>
+                        </ul>
+
+                        <!-- cooperation -->
+                        <div class="mb_style">
+                            <h3>협업 스타일</h3>
+                            <ul>
+                                <li>다양한 포지션과 의사소통 할 때 해당 포지션이 쉽게 이해할 수 있는 용어를 선택해 커뮤니케이션을 합니다.</li>
+                                <li>좋은 코드를 만들기 위해 다양한 코드에 대한 수용력이 높습니다.</li>
+                                <li>가지고 있는 역량과 지식으로 팀원으로서 최선의 지원을 다합니다.</li>
+                            </ul>
+                        </div>
+
+                        <!-- accomplishment -->
+                        <div class="mb_point">
+                            <h3>성취 포인트</h3>
+                            <p>다른 사람이 힘들어하는 문제를 도와 함께 해결했을 때와 결과물이 나오기까지의 모든 과정을 회상하며 보람을 느낍니다. 또한, 잘 모르는 언어를 내 것으로 만들었다고 확신이 들 때 더욱 큰 성취감을 느낍니다.</p>
+                        </div>
+
+                        <!-- advantage -->
+                        <div class="mb_pros">
+                            <h3>장점</h3>
+                            <ul>
+                                <li>남다른 구글링</li>
+                                <li>끝없는 호기심</li>
+                                <li>니즈파악 요정</li>
+                            </ul>
+                        </div>
+
+                        <!-- sns -->
+                        <div class="mb_sns">
+                            <a href="https://github.com/KIRBY-PARK" target="_blank"><img src="asset/img/github-icon.svg" alt="깃허브 아이콘 이미지"></a>
+                            <a href="https://velog.io/@kirby_y/posts" target="_blank"><img src="asset/img/velog-icon.svg" alt="벨로그 아이콘 이미지"></a>
+                        </div>
+
+                        <a href="javascript:" class="btn_layer comment_btn" layer="4"><span class="mb_nick_bold">지식도 먹는 커비</span>님과 친해지러가기</a>
+                        <!-- layer popup -->
+                        <div class="layer_wrap" layer="4">
+                            <div class="layer_content">
+                                <h3>To. 지식도 먹는 커비</h3>
+
+                                <ul class="comment_wr">
+                                    <!-- comment -->
+                                    <li>
+                                        <ul>
+                                            <li><img src="asset/img/anonymous.webp" alt="익명 프로필 이미지"></li>
+                                            <li>
+                                                <div class="nick_name">뜨거운 감자박스</div>
+                                                <div class="comment_des">
+                                                    안녕하세요. 제 이름은 핫감자입니다. 감자라서 그런지 꽤나 퍽퍽하지만서도 따끈따끈한 마음을 가지고 있어요.
+                                                    당신과 친해지기 위해서라면 이 한 몸을 불사질러 찜통에도 들어가보려고 합니다. 헛소리 같다고요?
+                                                    (퐁당)
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <ul>
+                                            <li><img src="asset/img/anonymous.webp" alt="익명 프로필 이미지"></li>
+                                            <li>
+                                                <div class="nick_name">차가운 감자박스</div>
+                                                <div class="comment_des">
+                                                    안녕하세요. 제 이름은 쿨감자입니다. 감자라서 그런지 꽤나 퍽퍽하지만서도 따끈따끈한 마음을 가지고 있어요.
+                                                    당신과 친해지기 위해서라면 이 한 몸을 불사질러 찜통에도 들어가보려고 합니다. 헛소리 같다고요?
+                                                    (퐁당)
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <ul>
+                                            <li><img src="asset/img/anonymous.webp" alt="익명 프로필 이미지"></li>
+                                            <li>
+                                                <div class="nick_name">미지근한 감자박스</div>
+                                                <div class="comment_des">
+                                                    안녕하세요. 제 이름은 애매감자입니다. 감자라서 그런지 꽤나 퍽퍽하지만서도 따끈따끈한 마음을 가지고 있어요.
+                                                    당신과 친해지기 위해서라면 이 한 몸을 불사질러 찜통에도 들어가보려고 합니다. 헛소리 같다고요?
+                                                    (퐁당)
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                <ul class="write_comment">
+                                    <li>
+                                        <label for="nickname04">닉네임</label>
+                                        <input type="text" id="nickname04" class="input_nick" placeholder="닉네임을 입력하세요">
+                                    </li>
+                                    <li>
+                                        <label for="comment04">댓글</label>
+                                        <textarea type="text" id="comment04" placeholder="하고 싶은 말을 남겨주세요"></textarea>
+                                    </li>
+                                </ul>
+
+                                <ul class="btn_wr">
+                                    <li><a href="javascript:" class="close_btn">닫기</a></li>
+                                    <li><a href="" class="upload_btn" id = "commentWrite04">댓글등록</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+        </section>
+    </div>
+
+    <!-- layer popup -->
+    <script>
+        $(function () {
+            // 레이어 display none
+            $(".layer_bg, .layer_wrap").hide();
+            //레이어팝업 위치 지정 function 생성
+            function layer_position(){
+                var win_W = $(window).width();
+                var win_H = $(window).height();
+                $(".layer_wrap");
+            };
+            //레이어팝업 open 상태 function 생성
+            function layer_open(no){
+                $(".layer_wrap[layer="+no+"]").fadeIn();
+                $(".layer_bg").fadeIn();
+                layer_position();
+                //레이어 영역 외 바탕화면 클릭시 화면 닫기
+                $(".layer_bg").click(function (e) {
+                    if(!$(".layer_wrap").has(e.target).length){
+                        layer_close();
+                    };
+                });
+            };
+            //레이어팝업 close 상태 function 만들기
+            function layer_close(){
+                $(".layer_wrap, .layer_bg").fadeOut();
+            };
+            //링크 클릭시 해당 레이어팝업 호출
+            $(".btn_layer").click(function () {
+                var no = $(this).attr("layer");
+                layer_open(no);
+            });
+            //닫기 버튼 클릭시 레이어 닫기
+            $(".close_btn").click(function () {
+                layer_close();
+            });
+            //반응형 대응 - 레이어 위치 잡기
+            $(window).resize(function () {
+                layer_position();
+            });
+        })
+    </script>
+</body>
+</html>

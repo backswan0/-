@@ -63,7 +63,7 @@
                 query(
                     collection(db, "comments"),
                     where("id", "==", idNum),
-                    orderBy("commentId", "asc")
+                    orderBy("date", "asc")
                 )
             );
 

@@ -1,0 +1,184 @@
+@charset "utf-8";
+
+.container {display: block; margin: 0 auto; width: 95%; max-width: 1200px;}
+
+/* header */
+header {padding: 250px 0;}
+.main_title {text-align: center;}
+.main_title h1 {font-size: 90px;}
+.main_title p {margin: 25px 0 0; font-size: 25px;}
+.main_title .light_blue {color: #7cd7f8;}
+
+.main_title ul {display: flex; justify-content: space-between; align-items: center; margin: 0 auto 20px; max-width: 350px;}
+.main_title ul li:nth-child(2) {font-size: 60px; font-weight: 900}
+.main_title ul li img {height: 100px}
+
+/* mb_team_wr section */
+section.mb_team_wr {}
+.mb_team {}
+.mb_team>ul {display: flex; flex-wrap: wrap; justify-content: space-between;}
+.mb_team>ul>li {position: relative; margin-bottom: 150px; width: 45%;}
+
+.profile_top {display: flex; justify-content: left;}
+.mb_team .profile_top li:first-child {position: relative;}
+.profile_top li:first-child .circle {position: absolute; top: 0; left: 80px; width: 100px; height: 100px; border-radius: 100%; z-index: -10;}
+.profile_top li:first-child img {position: relative; display: block; width: 150px; z-index: -1;}
+
+.profile_top li:last-child {padding: 0 0 0 50px;}
+.profile_top li:last-child .mb_des {font-size: 23px; font-weight: 500; line-height: 1.4;}
+.profile_top li:last-child .mb_nick {margin: 8px 0 10px; font-size: 34px; font-weight: 600;}
+.profile_top li:last-child .mb_mbti {display: inline-block; padding: 6px 18px; font-size: 18px; font-weight: 600; letter-spacing: 1.5px; color: #111; border-radius: 100px;}
+
+.mb_style, .mb_point, .mb_pros {margin: 20px 0 30px;}
+.mb_style h3, .mb_point h3, .mb_pros h3 {margin-bottom: 10px; font-size: 24px; font-weight: 500;}
+.mb_point p {font-size: 14px; line-height: 1.5;}
+
+/* layer popup */
+.layer_bg {position:fixed; left:0; top:0; width:100%; height:100%; background: rgb(0 0 0 / 19%); backdrop-filter: blur(5px);}
+.layer_wrap {position:absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; height: auto; text-align: center; background:#fff; border-radius: 30px; z-index: 10;}
+.layer_wrap h3 {margin-bottom: 30px; font-size: 27px; font-weight: 700; color: #111;}
+
+.layer_content {position: relative; padding: 30px;}
+.layer_content .btn_wr {display: flex; justify-content: right; margin: 30px 0 0;}
+.layer_content .btn_wr li a {display: block; margin-left: 15px; padding: 15px 25px; border-radius: 8px}
+.layer_content .close_btn {background-color: #dbdbdb;}
+.layer_content .upload_btn {margin: 0 0 0 10px; padding: 15px 25px; font-size: 16px; color: #fff; background-color: #111; border-radius: 8px;}
+
+.comment_wr {display: block; height: 325px; overflow: scroll;}
+.comment_wr ul {margin-bottom: 15px; padding: 17px 15px;}
+.comment_wr ul {background-color: #f1f1f1; border: 1px solid #f1f1f1; border-radius: 10px;}
+.comment_wr ul:nth-child(even) {border: 1px solid #dbdbdb; background-color: #fff; border-radius: 10px;}
+
+.comment_wr>div ul {display: flex;}
+.comment_wr>div ul li img {width: 55px;}
+.comment_wr>div ul li:last-child {padding-left: 15px; text-align: left;}
+.comment_wr>div ul li:last-child .nick_name {font-size: 17px; font-weight: 700; color: #494949;}
+.comment_wr>div ul li:last-child .comment_des {margin: 8px 0 0; font-size: 14px; line-height: 1.3; color: #a6a6a6;}
+
+.write_comment {margin: 30px 0 0; text-align: left;}
+.write_comment li {margin-bottom: 20px;}
+.write_comment label {font-size: 17px; font-weight: 500; color: #555;}
+.write_comment .input_nick {padding: 3px 5px; font-size: 19px; font-weight: 700; border: none; border-bottom: 1px solid #b9b9b9;}
+.write_comment li:last-child textarea {display: block; margin: 10px 0 0; padding: 15px; width: 100%; height: 120px; font-size: 15px; line-height: 1.3; color: #a6a6a6; box-sizing: border-box; border: none; border-radius: 10px; background-color: #f1f1f1;}
+.write_comment .input_nick::placeholder {font-size: 15px; font-weight: 500; color: #a6a6a6;}
+.write_comment li:last-child textarea::placeholder {font-size: 15px; line-height: 1.3; color: #a6a6a6;}
+
+/* style 공통 */
+.mb_style ul {list-style: disc;}
+.mb_style ul li {margin-left: 20px;}
+.mb_style ul li, .mb_point p {font-size: 16px; font-weight: 400; line-height: 1.5;}
+
+/* pros 공통 */
+.mb_pros ul {display: flex; justify-content: left;}
+.mb_pros li {margin-right: 8px; padding: 8px 15px; font-size: 18px; font-weight: 600; color: #111; text-align: center; border-radius: 100px; background-color: #4598de;}
+
+/* sns 공통 */
+.mb_sns {display: flex; justify-content: right;}
+.mb_sns a {display: block; margin-left: 10px;}
+.mb_sns a img {width: 45px;}
+.mb_sns:hover {cursor: pointer;}
+
+/* comment button 공통 */
+.comment_btn {position: relative; display: block; margin: 20px 0; padding: 20px 0; width: 100%; font-size: 24px; font-weight: 500; text-align: center; color: #fff; border-radius: 10px; border: none;}
+.comment_btn {opacity: 0.7;}
+.comment_btn:hover {opacity: 1; transition: 0.5s;}
+.mb_nick_bold {font-weight: 700;}
+
+/* circle */
+.mb_team>ul>li:first-child .circle {background-color: #4598de;}
+.mb_team>ul>li:nth-child(2) .circle {background-color: #9ec5ff;}
+.mb_team>ul>li:nth-child(3) .circle {background-color: #a5e2ff;}
+.mb_team>ul>li:last-child .circle {background-color: #ff82cc;}
+
+/* mb_nick */
+.mb_team>ul>li:first-child .mb_nick {color: #4598de;}
+.mb_team>ul>li:nth-child(2) .mb_nick {color: #9ec5ff;}
+.mb_team>ul>li:nth-child(3) .mb_nick {color: #a5e2ff;}
+.mb_team>ul>li:last-child .mb_nick {color: #ff82cc;}
+
+/* mbti */
+.mb_team>ul>li:first-child .mb_mbti {background-color: #4598de;}
+.mb_team>ul>li:nth-child(2) .mb_mbti {background-color: #9ec5ff;}
+.mb_team>ul>li:nth-child(3) .mb_mbti {background-color: #a5e2ff;}
+.mb_team>ul>li:last-child .mb_mbti {background-color: #ff82cc;}
+
+/* style & pros */
+.mb_team>ul>li:first-child .mb_style h3, .mb_team>ul>li:first-child .mb_point h3, .mb_team>ul>li:first-child .mb_pros h3 {color: #4598de;}
+.mb_team>ul>li:nth-child(2) .mb_style h3, .mb_team>ul>li:nth-child(2) .mb_point h3, .mb_team>ul>li:nth-child(2) .mb_pros h3 {color: #9ec5ff;}
+.mb_team>ul>li:nth-child(3) .mb_style h3, .mb_team>ul>li:nth-child(3) .mb_point h3, .mb_team>ul>li:nth-child(3) .mb_pros h3 {color: #a5e2ff;}
+.mb_team>ul>li:last-child .mb_style h3, .mb_team>ul>li:last-child .mb_point h3, .mb_team>ul>li:last-child .mb_pros h3 {color: #ff82cc;}
+
+/* pros */
+.mb_team>ul>li:first-child .mb_pros li {background-color: #4598de;}
+.mb_team>ul>li:first-child .mb_pros li:nth-child(2) {background-color: #111; color: #4598de; border: 1px solid #4598de;}
+.mb_team>ul>li:nth-child(2) .mb_pros li {background-color: #9ec5ff;}
+.mb_team>ul>li:nth-child(2) .mb_pros li:nth-child(2) {background-color: #111; color: #9ec5ff;; border: 1px solid #9ec5ff;;}
+.mb_team>ul>li:nth-child(3) .mb_pros li {background-color: #a5e2ff;}
+.mb_team>ul>li:nth-child(3) .mb_pros li:nth-child(2) {background-color: #111; color: #a5e2ff; border: 1px solid #a5e2ff;}
+.mb_team>ul>li:last-child .mb_pros li {background-color: #ff82cc;}
+.mb_team>ul>li:last-child .mb_pros li:nth-child(2) {background-color: #111; color: #ff82cc; border: 1px solid #ff82cc;}
+
+/* comment button */
+.mb_team>ul>li:first-child .comment_btn {background-color: #4598de;}
+.mb_team>ul>li:nth-child(2) .comment_btn {background-color: #9ec5ff;}
+.mb_team>ul>li:nth-child(3) .comment_btn {background-color: #a5e2ff;}
+.mb_team>ul>li:last-child .comment_btn {background-color: #ff82cc;}
+
+
+/* mobile */
+@media (max-width: 970px){
+    header {padding: 200px 0;}
+    .main_title h1 {font-size: 45px;}
+    .main_title p {margin: 15px 0 0;  font-size: 16px; }
+
+    .main_title ul {display: flex; justify-content: space-between; align-items: center; margin: 0 auto 10px; max-width: 180px;}
+    .main_title ul li:nth-child(2) {font-size: 35px; font-weight: 800}
+    .main_title ul li img {height: 50px}
+
+    .mb_team>ul {justify-content: center;}
+    .mb_team>ul li {width: 95%;}
+    .mb_team .profile_top li:first-child {width: 63%;}
+    .profile_top li:first-child .circle {left: 48px; width: 75px; height: 75px;}
+    .profile_top li:first-child img {width: 110px;}
+    .profile_top li:last-child {padding: 0; width: 97%;}
+    .profile_top li:last-child .mb_des {font-size: 15px; font-weight: 400;}
+    .profile_top li:last-child .mb_nick {margin: 5px 0 8px; font-size: 20px;}
+    .profile_top li:last-child .mb_mbti {padding: 5px 15px; font-size: 14px;}
+
+    .comment_btn {padding: 17px 0; font-size: 17px; border-radius: 5px; opacity: 1;}
+
+    .mb_sns a {margin-left: 5px;}
+    .mb_sns a img {width: 40px;}
+
+    .mb_style ul li, .mb_point p {font-size: 14px;}
+
+    .mb_style h3, .mb_point h3, .mb_pros h3 {font-size: 20px;}
+    .mb_pros li {padding: 9px 3px; font-size: 13px;}
+
+    .layer_wrap {width: 100%;}
+    .layer_content {padding: 20px;}
+    .layer_content .btn_wr {margin: 20px 0 0;}
+    .btn_wr li {width: auto !important;}
+    .layer_content .btn_wr li:first-child {padding: 10px 18px; background-color: #dbdbdb; border-radius: 5px;}
+    .layer_content .btn_wr li:last-child {background: no-repeat}
+    .layer_content .btn_wr li a {padding: 0; margin-left: 0; font-size: 15px; }
+    .layer_content .upload_btn {padding: 10px; width: 100px; font-size: 15px; border-radius: 5px;}
+
+    .layer_wrap h3 {margin-bottom: 20px; font-size: 20px;}
+
+    .comment_wr ul {margin-bottom: 10px; padding: 15px 10px;}
+    .comment_wr ul li {width: auto;}
+    .comment_wr>div ul li:last-child {padding-left: 10px;}
+    .comment_wr>div ul li:last-child .nick_name {font-size: 15px;}
+    .comment_wr>div ul li:last-child .comment_des {margin: 6px 0 0; font-size: 13px;}
+    .comment_wr>div ul li img {width: 45px;}
+
+    .write_comment label {font-size: 15px;}
+    .write_comment li {width: 100% !important;}
+    .write_comment li:last-child textarea {font-size: 13px;}
+    .write_comment .input_nick {font-size: 15px;}
+    .write_comment .input_nick::placeholder {font-size: 15px;}
+    .write_comment li:last-child textarea::placeholder {font-size: 13px;}
+
+
+}

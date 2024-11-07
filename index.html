@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="asset/css/main.css">
     <!-- Pretendard font css -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
-    <!-- script -->
+
     <script src="asset/js/main.js" defer></script>
 
     <!-- 나중에 서버 만들면 따로 폴더 만들어서 뺍시다.지금은 CORS규칙(보안 문제)때문에 main.js에서 firebase를 사용할 수가 없어요 -->
@@ -132,11 +132,13 @@
             </ul>
             <h1>아, 저장안했다</h1>
             <p><span class="light_blue">저장</span>을 <span class="light_blue">사랑</span>하는 사람들의 <span class="light_blue">모임</span></p>
+            <a class="chat_scroll" href="#chat_wrap">'저사모톡' 바로가기</a>
         </div>
     </header>
 
     <section class="mb_team_wr">
         <h3 class="hidden">팀원 소개 목록</h3>
+        <!-- team -->
         <article class="mb_team wrap">
             <ul>
                 <!-- jihyeon -->
@@ -449,6 +451,44 @@
                     </div>
                 </li>
             </ul>
+        </article>
+
+        <!-- chat -->
+        <article id="chat_wrap" class="chat_con_wrap">
+            <div class="chat_content">
+                <div id="today_date" style="color: #fff;"></div>
+                <div class="chat_wr">
+                    <!-- Write chat -->
+                    <ul class="write_comment">
+                        <li>
+                            <label for="comment01">메세지 입력</label>
+                            <input type="text" id="chatMesege" placeholder="메세지를 입력하세요">
+                            <button type="button" class="upload_btn" id="chatMesege">보내기</button>
+                        </li>
+                    </ul>
+
+                    <!-- chat -->
+                    <div id="chat_list">
+                        <!-- 전에 작업하신 것과 동일하게 채팅 하나 당 ul 하나 추가입니다 -->
+                        <ul>
+                            <li><img src="asset/img/anonymous.webp" alt="익명 프로필 이미지"></li>
+                            <li>
+                                <div class="chat_des">안녕하세요 저는 이만 왔다 갑니다.</div>
+                                <div class="date">11.07 12:23</div>
+                            </li>
+                        </ul>
+
+                        <ul>
+                            <li><img src="asset/img/anonymous.webp" alt="익명 프로필 이미지"></li>
+                            <li>
+                                <div class="chat_des">안녕하세요 저는 이만 왔다 갑니다. 길게 적으면 어떻게 적히는지 상당히 궁금하니까 한 번 길게 적어볼게요. 음.. 어떤가요?</div>
+                                <div class="date">11.07 12:23</div>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
         </article>
     </section>
 </div>
